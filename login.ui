@@ -2,6 +2,14 @@
 <ui version="4.0">
  <class>Dialog</class>
  <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>451</width>
+    <height>301</height>
+   </rect>
+  </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
@@ -20,13 +28,13 @@ background-color :qlineargradient(spread:pad, x1:0.19346, y1:0.233, x2:1, y2:1, 
 }
 </string>
    </property>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="welcome">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>30</y>
-      <width>271</width>
-      <height>41</height>
+      <x>170</x>
+      <y>40</y>
+      <width>101</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -35,10 +43,10 @@ font: 75 20pt &quot;MS Serif&quot;;
 color: white;</string>
     </property>
     <property name="text">
-     <string>WELCOME TO PING</string>
+     <string>LOG IN</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="signin">
     <property name="geometry">
      <rect>
       <x>120</x>
@@ -52,14 +60,14 @@ color: white;</string>
 color: white;</string>
     </property>
     <property name="text">
-     <string>Sign in Or Create a New Account</string>
+     <string>Sign in to Your Existing Account</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="login">
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>130</y>
+      <y>250</y>
       <width>151</width>
       <height>31</height>
      </rect>
@@ -77,26 +85,89 @@ background-color: rgb(185, 246, 255);
      <string>Log In</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QLineEdit" name="username">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>190</y>
-      <width>151</width>
-      <height>31</height>
+      <x>130</x>
+      <y>130</y>
+      <width>201</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-style: outset;
-border-width: 3px;
-font:  8pt &quot;Arial Black&quot;;
-border-radius: 10px;
-border-color: beige;
-background-color: rgb(185, 246, 255);
-</string>
+     <string notr="true">	text-transform: capitalize;
+	font: 12pt &quot;MS Reference Sans Serif&quot;;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #000000;
+    color: #07315B;
+	background-color:transparent;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_1">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>110</y>
+      <width>51</width>
+      <height>16</height>
+     </rect>
     </property>
     <property name="text">
-     <string>Create an Account</string>
+     <string>User Name</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>170</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Password</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="error">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>220</y>
+      <width>201</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 0, 0);
+font: 75 10pt &quot;Yu Gothic&quot;;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="password">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>190</y>
+      <width>201</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">	text-transform: capitalize;
+	font: 12pt &quot;MS Reference Sans Serif&quot;;
+    width: 100%;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #000000;
+    color: #07315B;
+	background-color:transparent;</string>
     </property>
    </widget>
   </widget>
