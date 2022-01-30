@@ -1,9 +1,8 @@
 import sys
-from typing import Union
 
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets, QtGui
-from PyQt5.QtWidgets import QApplication, QDialog, QWidget, QStackedWidget
+from PyQt5.QtWidgets import QApplication, QDialog, QStackedWidget
 
 
 class WelcomeScreen(QDialog):
