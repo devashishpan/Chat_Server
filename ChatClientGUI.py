@@ -29,7 +29,7 @@ class Login(QDialog):
         passwd = self.password.text()
 
         if len(passwd) == 0 or len(user) == 0:
-            self.error.setText("Please Fill All Feilds....")
+            self.error.setText("Please Fill All Fields....")
         else:
             if passwd == "12345":
                 print("Logged In....")
