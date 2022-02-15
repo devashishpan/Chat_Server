@@ -68,7 +68,7 @@ color: black;</string>
     <property name="geometry">
      <rect>
       <x>130</x>
-      <y>220</y>
+      <y>250</y>
       <width>151</width>
       <height>31</height>
      </rect>
@@ -92,7 +92,7 @@ background-color: rgb(185, 246, 255);
       <x>110</x>
       <y>190</y>
       <width>201</width>
-      <height>16</height>
+      <height>51</height>
      </rect>
     </property>
     <property name="styleSheet">
