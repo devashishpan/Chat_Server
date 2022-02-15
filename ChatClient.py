@@ -1,6 +1,11 @@
+import re
 import socket
 import sys
 from threading import *
+
+from PyQt5.uic import loadUi
+from PyQt5 import QtWidgets, QtGui
+from PyQt5.QtWidgets import QApplication, QDialog, QStackedWidget
 
 
 class Client:
@@ -49,7 +54,6 @@ class Client:
 
 
 start_client = Client()
-start_client.converse(socket.gethostbyname(socket.gethostname()))
 
 
 class Send(Thread):
@@ -63,6 +67,34 @@ class Recv(Thread):
         start_client.recv_message()
 
 
+class ServerLogin(QDialog):
+    def __init__(self):
+        super(ServerLogin, self).__init__()
+        loadUi("server_login.ui", self)
+        self.login.clicked.connect(self.goto_login)
+
+    def goto_login(self):
+        if re.search(regex, self.server_ip.text()):
+            global s_ip
+            s_ip = self.server_ip.text()
+            try:
+                start_client.converse(s_ip)
+                self.close()
+            except Exception as e:
+                self.error.setText(f"{e}Please Enter a valid IP....")
+        else:
+            self.error.setText("Please Enter a valid IP....")
+
+
+regex = "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$"
+s_ip = ""
+
+
 if __name__ == '__main__':
-    Recv().start()
-    Send().start()
+    app = QApplication(sys.argv)
+    app.setWindowIcon(QtGui.QIcon("ping.jpeg"))
+    welcome = ServerLogin()
+    welcome.setWindowTitle("PING")
+    welcome.show()
+    #Recv().start()
+    #Send().start()
