@@ -109,7 +109,7 @@ class MainWindow(QDialog):
                 self.progressBar.setValue(completed)
         else:
             return 0
-        self.send_completed()
+        send_completed()
         self.progressBar.setVisible(False)
 
     @staticmethod
@@ -159,7 +159,7 @@ class MainWindow(QDialog):
 
 app = QApplication(sys.argv)
 app.setWindowIcon(QtGui.QIcon("ping.jpeg"))
-welcome = MainWindow()
+welcome = WelcomeScreen()
 main_window = MainWindow()
 widget = QStackedWidget()
 widget.setWindowTitle("PING")
