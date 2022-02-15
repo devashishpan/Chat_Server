@@ -109,11 +109,11 @@ class MainWindow(QDialog):
                 self.progressBar.setValue(completed)
         else:
             return 0
-        send_completed()
+        self.send_completed()
         self.progressBar.setVisible(False)
 
     @staticmethod
-    def send_completed(self):
+    def send_completed():
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)
         msg.setText("File Send Complete!!!!")
