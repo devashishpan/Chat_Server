@@ -71,7 +71,7 @@ class WelcomeScreen(QDialog):
             global s_ip
             s_ip = self.server_ip.text()
             try:
-                start_client.converse(s_ip)
+                #start_client.converse(s_ip)
                 widget.addWidget(main_window)
                 widget.setFixedHeight(450)
                 widget.setFixedWidth(600)
@@ -96,6 +96,7 @@ class MainWindow(QDialog):
         filesize = os.path.getsize(filename)
         total = round(filesize / BUFFER_SIZE) + 1
         completed = 0
+        return
         if path != ([], ''):
             self.progressBar.setVisible(True)
             start_client.send_message(f"{filename}${filesize}".encode())
