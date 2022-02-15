@@ -103,6 +103,24 @@ font: 75 10pt &quot;Yu Gothic&quot;;</string>
      <string/>
     </property>
    </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>60</y>
+      <width>271</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+font: 75 20pt &quot;MS Serif&quot;;
+color: black;</string>
+    </property>
+    <property name="text">
+     <string>WELCOME TO PING</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>

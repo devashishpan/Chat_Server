@@ -53,6 +53,8 @@ class Client:
         self.connect_()
 
 
+regex = "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$"
+s_ip = ""
 start_client = Client()
 
 
@@ -67,9 +69,9 @@ class Recv(Thread):
         start_client.recv_message()
 
 
-class ServerLogin(QDialog):
+class WelcomeScreen(QDialog):
     def __init__(self):
-        super(ServerLogin, self).__init__()
+        super(WelcomeScreen, self).__init__()
         loadUi("server_login.ui", self)
         self.login.clicked.connect(self.goto_login)
 
@@ -86,15 +88,16 @@ class ServerLogin(QDialog):
             self.error.setText("Please Enter a valid IP....")
 
 
-regex = "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$"
-s_ip = ""
-
-
+app = QApplication(sys.argv)
+app.setWindowIcon(QtGui.QIcon("ping.jpeg"))
+welcome = ServerLogin()
+widget = QStackedWidget()
+widget.setWindowTitle("PING")
+widget.addWidget(welcome)
+widget.setFixedHeight(300)
+widget.setFixedWidth(450)
+widget.show()
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    app.setWindowIcon(QtGui.QIcon("ping.jpeg"))
-    welcome = ServerLogin()
-    welcome.setWindowTitle("PING")
-    welcome.show()
-    #Recv().start()
-    #Send().start()
+    pass
+    # Recv().start()
+    # Send().start()
