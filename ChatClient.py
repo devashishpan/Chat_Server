@@ -5,11 +5,9 @@ import sys
 from datetime import datetime
 from threading import *
 
+from PyQt5 import QtGui
+from PyQt5.QtWidgets import QApplication, QDialog, QStackedWidget, QFileDialog, QMessageBox
 from PyQt5.uic import loadUi
-from PyQt5.QtCore import Qt
-from PyQt5 import QtWidgets, QtGui, QtCore
-from PyQt5.QtWidgets import QApplication, QDialog, QStackedWidget, QFileDialog, QMessageBox, QLabel, QVBoxLayout, \
-    QTextEdit
 
 
 class Client:
