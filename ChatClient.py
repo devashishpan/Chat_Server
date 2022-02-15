@@ -2,11 +2,14 @@ import os.path
 import re
 import socket
 import sys
+from datetime import datetime
 from threading import *
 
 from PyQt5.uic import loadUi
+from PyQt5.QtCore import Qt
 from PyQt5 import QtWidgets, QtGui, QtCore
-from PyQt5.QtWidgets import QApplication, QDialog, QStackedWidget, QFileDialog, QMessageBox, QLabel
+from PyQt5.QtWidgets import QApplication, QDialog, QStackedWidget, QFileDialog, QMessageBox, QLabel, QVBoxLayout, \
+    QTextEdit
 
 
 class Client:
@@ -87,6 +90,7 @@ class MainWindow(QDialog):
         loadUi("main_window.ui", self)
         self.file.clicked.connect(self.send_file)
         self.progressBar.setVisible(False)
+        self.send.clicked.connect(self.send_messages)
 
     def send_file(self):
         path = QFileDialog.getOpenFileNames(self, 'Open a File', '', 'All Files (*.*)')
@@ -94,9 +98,9 @@ class MainWindow(QDialog):
         filesize = os.path.getsize(filename)
         total = round(filesize / BUFFER_SIZE) + 1
         completed = 0
-        if path == ([], ''):
+        if path != ([], ''):
             self.progressBar.setVisible(True)
-            start_client.new_socket.send(f"{filename}${filesize}".encode())
+            start_client.send_message(f"{filename}${filesize}".encode())
             self.send_files(f"{filename}")
             with open(filename, "rb") as f:
                 bytes_read = f.read(BUFFER_SIZE)
@@ -119,22 +123,40 @@ class MainWindow(QDialog):
         msg.setStandardButtons(QMessageBox.Ok)
         print(msg.exec_())
 
-    def send_messages(self, message):
-        label = QLabel(message)
-        label.setAlignment(QtCore.Qt.AlignRight)
-        self.messages.addWidget(label)
+    def send_messages(self):
+        message = self.message_box.text()
+        if message != '':
+            cursor = self.textArea.textCursor()
+            if not cursor.atEnd():
+                cursor.movePosition(QtGui.QTextCursor.End)
+            formatted_datetime = datetime.now().strftime("%H:%M:%S")
+            cursor.insertText(f'{formatted_datetime}:------------------\n{message}')
+            cursor.insertBlock()
+            # start_client.send_message(message)
+        else:
+            pass
 
     def received_message(self, message):
-        label = QLabel(message)
-        label.setAlignment(QtCore.Qt.AlignLeft)
-        self.messages.addWidget(label)
+        if message != '':
+            cursor = self.textArea.textCursor()
+            if not cursor.atEnd():
+                cursor.movePosition(QtGui.QTextCursor.End)
+            formatted_datetime = datetime.now().strftime("%H:%M:%S")
+            cursor.insertText(f'{formatted_datetime}:------------------\n{message}')
+            cursor.insertBlock()
+        else:
+            pass
 
     def send_files(self, message):
-        label = QLabel(message)
-        label.setAlignment(QtCore.Qt.AlignCenter)
-        label.adjustSize()
-        label.width(140)
-        self.messages.addWidget(label)
+        if message != '':
+            cursor = self.textArea.textCursor()
+            if not cursor.atEnd():
+                cursor.movePosition(QtGui.QTextCursor.End)
+            formatted_datetime = datetime.now().strftime("%H:%M:%S")
+            cursor.insertText(f'{formatted_datetime}:------------------\n{message}')
+            cursor.insertBlock()
+        else:
+            pass
 
 
 app = QApplication(sys.argv)
@@ -144,22 +166,14 @@ main_window = MainWindow()
 widget = QStackedWidget()
 widget.setWindowTitle("PING")
 widget.addWidget(welcome)
-widget.setFixedHeight(300)
-widget.setFixedWidth(450)
+widget.setFixedHeight(450)
+widget.setFixedWidth(600)
 widget.show()
 
 try:
     sys.exit(app.exec())
 except:
     print("Exiting....")
-
-
-class Send(Thread):
-    def run(self):
-        while start_client.check_connection():
-            message = main_window.message_box.text()
-            main_window.send_messages(message)
-            start_client.send_message(message)
 
 
 class Recv(Thread):
@@ -171,4 +185,3 @@ class Recv(Thread):
 if __name__ == '__main__':
     pass
     # Recv().start()
-    # Send().start()

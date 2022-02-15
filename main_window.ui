@@ -24,7 +24,7 @@
    </property>
    <property name="styleSheet">
     <string notr="true">border: 2px solid;
-border-color: red;</string>
+border-color: black;</string>
    </property>
    <widget class="QPushButton" name="audio">
     <property name="geometry">
@@ -87,34 +87,8 @@ border-color: red;</string>
    </property>
    <property name="styleSheet">
     <string notr="true">border: 2px solid;
-border-color: red;</string>
+border-color: black;</string>
    </property>
-   <widget class="QScrollArea" name="messages">
-    <property name="geometry">
-     <rect>
-      <x>9</x>
-      <y>9</y>
-      <width>191</width>
-      <height>341</height>
-     </rect>
-    </property>
-    <property name="layoutDirection">
-     <enum>Qt::LeftToRight</enum>
-    </property>
-    <property name="widgetResizable">
-     <bool>true</bool>
-    </property>
-    <widget class="QWidget" name="messaging_area">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>187</width>
-       <height>337</height>
-      </rect>
-     </property>
-    </widget>
-   </widget>
    <widget class="QLineEdit" name="message_box">
     <property name="geometry">
      <rect>
@@ -165,6 +139,16 @@ border-color: red;</string>
     </property>
     <property name="value">
      <number>24</number>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="textArea">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>191</width>
+      <height>341</height>
+     </rect>
     </property>
    </widget>
   </widget>
